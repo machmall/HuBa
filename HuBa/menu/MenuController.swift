@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuController: UIViewController,UIScrollViewDelegate {
+class MenuController: UIViewController,UIScrollViewDelegate,UIGestureRecognizerDelegate {
 
     var pc: UIPageControl!
     var sv:UIScrollView!
@@ -57,40 +57,30 @@ class MenuController: UIViewController,UIScrollViewDelegate {
     }
     
     func createUI(){
-        for i in 0...1 {
-            let btn:UIButton = UIButton(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/2), 265, self.view.frame.size.width/2, (self.view.frame.size.height-320)/3))
-//            btn.setTitle("按钮", forState: UIControlState.Normal)
-//            btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-//            btn.layer.borderWidth = 1
-//            btn.layer.borderColor = UIColor.blackColor().CGColor
-            btn.setBackgroundImage(UIImage(named: "btn1.jpeg"), forState:UIControlState.Normal)
+        for i in 0...2 {
+            let btn:UIButton = UIButton(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/3)+15, 265, self.view.frame.size.width/3-30, (self.view.frame.size.height-320)/3-9))
+            btn.setBackgroundImage(UIImage(named: "menu_btn\(i).png"), forState: UIControlState.Normal)
+            btn.contentMode = UIViewContentMode.ScaleAspectFit
+            //btn.userInteractionEnabled = true
             btn.tag = NSInteger(i)
-            btn.addTarget(self, action:Selector("getData:"), forControlEvents: UIControlEvents.TouchUpInside)
             self.view.addSubview(btn)
+            
+            btn.addTarget(self, action: Selector("getData:"), forControlEvents: UIControlEvents.TouchUpInside)
+            
         }
         
-        for i in 0...1 {
-            let btn:UIButton = UIButton(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/2), 265+(self.view.frame.size.height-320)/3, self.view.frame.size.width/2, (self.view.frame.size.height-320)/3))
-//            btn.setTitle("按钮", forState: UIControlState.Normal)
-//            btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-//            btn.layer.borderWidth = 1
-//            btn.layer.borderColor = UIColor.blackColor().CGColor
-            btn.tag = NSInteger(i)+2
-            btn.addTarget(self, action:Selector("getData:"), forControlEvents: UIControlEvents.TouchUpInside)
-            btn.setBackgroundImage(UIImage(named: "btn1.jpeg"), forState:UIControlState.Normal)
+        for i in 0...2 {
+            let btn:UIImageView = UIImageView(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/3), 270+(self.view.frame.size.height-320)/3, self.view.frame.size.width/3, (self.view.frame.size.height-320)/3))
+            btn.image = UIImage(named: "menu_btn\(i).png")
+            btn.contentMode = UIViewContentMode.ScaleAspectFit
+            btn.userInteractionEnabled = true
+            let  gat:UIGestureRecognizer = UIGestureRecognizer()
+            gat.addTarget(self, action: Selector("getData:"))
+            btn.addGestureRecognizer(gat)
+            btn.tag = NSInteger(i) + 2
             self.view.addSubview(btn)
         }
-        
-        for i in 0...1 {
-            let btn:UIButton = UIButton(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/2), 265+(self.view.frame.size.height-320)/3*2, self.view.frame.size.width/2, (self.view.frame.size.height-320)/3))
-            //            btn.setTitle("按钮", forState: UIControlState.Normal)
-            //            btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-            //            btn.layer.borderWidth = 1
-            //            btn.layer.borderColor = UIColor.blackColor().CGColor
-            btn.tag = NSInteger(i)+4
-            btn.setBackgroundImage(UIImage(named: "btn1.jpeg"), forState:UIControlState.Normal)
-            self.view.addSubview(btn)
-        }
+       
     }
         
     override func didReceiveMemoryWarning() {
@@ -100,25 +90,27 @@ class MenuController: UIViewController,UIScrollViewDelegate {
     
     
     func getData(btn:UIButton){
-        switch(btn.tag){
-        case 0:
-            let phone:PhoneAddressController = PhoneAddressController()
-            phone.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(phone, animated: false)
-            break
-        case 1:
-            let today:HistoryTodayController = HistoryTodayController()
-            today.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(today, animated: false)
-            break
-        case 2:
-            let hot:HotTravelController = HotTravelController()
-            hot.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(hot, animated: false)
-            break
-        default:
-            ""
-        }
+        
+        print("ddd")
+//        switch(btn.view!.tag){
+//        case 0:
+//            let phone:PhoneAddressController = PhoneAddressController()
+//            phone.hidesBottomBarWhenPushed = true
+//            self.navigationController?.pushViewController(phone, animated: false)
+//            break
+//        case 1:
+//            let today:HistoryTodayController = HistoryTodayController()
+//            today.hidesBottomBarWhenPushed = true
+//            self.navigationController?.pushViewController(today, animated: false)
+//            break
+//        case 2:
+//            let hot:HotTravelController = HotTravelController()
+//            hot.hidesBottomBarWhenPushed = true
+//            self.navigationController?.pushViewController(hot, animated: false)
+//            break
+//        default:
+//            ""
+//        }
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {

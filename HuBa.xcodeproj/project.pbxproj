@@ -38,6 +38,9 @@
 		0E8CC92E1BAD91D700E2C98E /* HotTravelWebDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8CC9271BAD91D700E2C98E /* HotTravelWebDetailController.swift */; settings = {ASSET_TAGS = (); }; };
 		0E8CC92F1BAD91D700E2C98E /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8CC9281BAD91D700E2C98E /* MenuController.swift */; settings = {ASSET_TAGS = (); }; };
 		0E8CC9301BAD91D700E2C98E /* PhoneAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8CC9291BAD91D700E2C98E /* PhoneAddressController.swift */; settings = {ASSET_TAGS = (); }; };
+		0E8CC9351BAD961700E2C98E /* menu_btn0.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E8CC9341BAD961700E2C98E /* menu_btn0.png */; settings = {ASSET_TAGS = (); }; };
+		0E8CC93B1BADA50600E2C98E /* menu_btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E8CC93A1BADA50600E2C98E /* menu_btn1.png */; settings = {ASSET_TAGS = (); }; };
+		0E8CC93D1BADA86300E2C98E /* menu_btn2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E8CC93C1BADA86300E2C98E /* menu_btn2.png */; settings = {ASSET_TAGS = (); }; };
 		0E8E37291BA69842002E38F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E37281BA69842002E38F0 /* AppDelegate.swift */; };
 		0E8E372E1BA69842002E38F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E8E372C1BA69842002E38F0 /* Main.storyboard */; };
 		0E8E37301BA69842002E38F0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E8E372F1BA69842002E38F0 /* Images.xcassets */; };
@@ -142,6 +145,9 @@
 		0E8CC9271BAD91D700E2C98E /* HotTravelWebDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotTravelWebDetailController.swift; sourceTree = "<group>"; };
 		0E8CC9281BAD91D700E2C98E /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		0E8CC9291BAD91D700E2C98E /* PhoneAddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneAddressController.swift; sourceTree = "<group>"; };
+		0E8CC9341BAD961700E2C98E /* menu_btn0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_btn0.png; sourceTree = "<group>"; };
+		0E8CC93A1BADA50600E2C98E /* menu_btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_btn1.png; sourceTree = "<group>"; };
+		0E8CC93C1BADA86300E2C98E /* menu_btn2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_btn2.png; sourceTree = "<group>"; };
 		0E8E37231BA69842002E38F0 /* HuBa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuBa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E8E37271BA69842002E38F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E8E37281BA69842002E38F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 		0E8CC8F01BAD8F6100E2C98E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0E8CC9331BAD961700E2C98E /* menu */,
 				0E8CC9101BAD916300E2C98E /* icons */,
 				0E8CC8F11BAD900500E2C98E /* 001@2x.png */,
 				0E8CC8F21BAD900500E2C98E /* 002@2x.png */,
@@ -249,6 +256,16 @@
 			path = icons;
 			sourceTree = "<group>";
 		};
+		0E8CC9331BAD961700E2C98E /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				0E8CC93C1BADA86300E2C98E /* menu_btn2.png */,
+				0E8CC93A1BADA50600E2C98E /* menu_btn1.png */,
+				0E8CC9341BAD961700E2C98E /* menu_btn0.png */,
+			);
+			path = menu;
+			sourceTree = "<group>";
+		};
 		0E8E371A1BA69842002E38F0 = {
 			isa = PBXGroup;
 			children = (
@@ -271,10 +288,10 @@
 		0E8E37251BA69842002E38F0 /* HuBa */ = {
 			isa = PBXGroup;
 			children = (
+				0E8CC8F01BAD8F6100E2C98E /* images */,
 				0E8CC90D1BAD912000E2C98E /* news */,
 				0E8CC90C1BAD90CF00E2C98E /* menu */,
 				0E8CC9091BAD907700E2C98E /* set */,
-				0E8CC8F01BAD8F6100E2C98E /* images */,
 				0E8E37281BA69842002E38F0 /* AppDelegate.swift */,
 				0E8E372C1BA69842002E38F0 /* Main.storyboard */,
 				0E8E372F1BA69842002E38F0 /* Images.xcassets */,
@@ -449,13 +466,16 @@
 				0E8CC9011BAD900500E2C98E /* btn1.jpeg in Resources */,
 				0E8E37331BA69842002E38F0 /* LaunchScreen.xib in Resources */,
 				0E8CC9061BAD900500E2C98E /* pic4.jpg in Resources */,
+				0E8CC93D1BADA86300E2C98E /* menu_btn2.png in Resources */,
 				0E8CC8FE1BAD900500E2C98E /* 002@2x.png in Resources */,
 				0E8CC9211BAD916300E2C98E /* 76.png in Resources */,
 				0E8CC9221BAD916300E2C98E /* icon.png in Resources */,
 				0E8CC9031BAD900500E2C98E /* pic1.jpg in Resources */,
 				0E8CC91E1BAD916300E2C98E /* 57.png in Resources */,
 				0E8CC91D1BAD916300E2C98E /* 50.png in Resources */,
+				0E8CC9351BAD961700E2C98E /* menu_btn0.png in Resources */,
 				0E8CC9001BAD900500E2C98E /* btn.jpg in Resources */,
+				0E8CC93B1BADA50600E2C98E /* menu_btn1.png in Resources */,
 				0E8CC91F1BAD916300E2C98E /* 60.png in Resources */,
 				0E8CC8FF1BAD900500E2C98E /* 003@2x.png in Resources */,
 				0E8CC91A1BAD916300E2C98E /* 120.png in Resources */,
