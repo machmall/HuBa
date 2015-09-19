@@ -35,7 +35,7 @@ class MenuController: UIViewController,UIScrollViewDelegate {
         for i in 1...6{ //loading the images
                 let image = UIImage(named: "pic\(i).jpg")!
                 let x = CGFloat(i - 1) * self.view.frame.width //这一步获取ScrollView的宽度时我用IPHONE6实体机测试是320，右边会出现第二张图片的一部分，最后还是用ROOT VIEW的宽度
-                var imageView = UIImageView(frame: CGRectMake(x, 0, self.view.frame.width, sv.bounds.height))
+                let imageView = UIImageView(frame: CGRectMake(x, 0, self.view.frame.width, sv.bounds.height))
                 imageView.image = image
                 imageView.contentMode = UIViewContentMode.ScaleAspectFit
                 sv.pagingEnabled = true
@@ -58,7 +58,7 @@ class MenuController: UIViewController,UIScrollViewDelegate {
     
     func createUI(){
         for i in 0...1 {
-            var btn:UIButton = UIButton(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/2), 265, self.view.frame.size.width/2, (self.view.frame.size.height-320)/3))
+            let btn:UIButton = UIButton(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/2), 265, self.view.frame.size.width/2, (self.view.frame.size.height-320)/3))
 //            btn.setTitle("按钮", forState: UIControlState.Normal)
 //            btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
 //            btn.layer.borderWidth = 1
@@ -70,18 +70,19 @@ class MenuController: UIViewController,UIScrollViewDelegate {
         }
         
         for i in 0...1 {
-            var btn:UIButton = UIButton(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/2), 265+(self.view.frame.size.height-320)/3, self.view.frame.size.width/2, (self.view.frame.size.height-320)/3))
+            let btn:UIButton = UIButton(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/2), 265+(self.view.frame.size.height-320)/3, self.view.frame.size.width/2, (self.view.frame.size.height-320)/3))
 //            btn.setTitle("按钮", forState: UIControlState.Normal)
 //            btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
 //            btn.layer.borderWidth = 1
 //            btn.layer.borderColor = UIColor.blackColor().CGColor
             btn.tag = NSInteger(i)+2
+            btn.addTarget(self, action:Selector("getData:"), forControlEvents: UIControlEvents.TouchUpInside)
             btn.setBackgroundImage(UIImage(named: "btn1.jpeg"), forState:UIControlState.Normal)
             self.view.addSubview(btn)
         }
         
         for i in 0...1 {
-            var btn:UIButton = UIButton(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/2), 265+(self.view.frame.size.height-320)/3*2, self.view.frame.size.width/2, (self.view.frame.size.height-320)/3))
+            let btn:UIButton = UIButton(frame: CGRectMake(CGFloat(i)*(self.view.frame.size.width/2), 265+(self.view.frame.size.height-320)/3*2, self.view.frame.size.width/2, (self.view.frame.size.height-320)/3))
             //            btn.setTitle("按钮", forState: UIControlState.Normal)
             //            btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             //            btn.layer.borderWidth = 1
@@ -101,12 +102,19 @@ class MenuController: UIViewController,UIScrollViewDelegate {
     func getData(btn:UIButton){
         switch(btn.tag){
         case 0:
-            var phone:PhoneAddressController = PhoneAddressController()
+            let phone:PhoneAddressController = PhoneAddressController()
             phone.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(phone, animated: false)
             break
         case 1:
-            
+            let today:HistoryTodayController = HistoryTodayController()
+            today.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(today, animated: false)
+            break
+        case 2:
+            let hot:HotTravelController = HotTravelController()
+            hot.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(hot, animated: false)
             break
         default:
             ""
@@ -145,7 +153,7 @@ class MenuController: UIViewController,UIScrollViewDelegate {
             pageIndex++
         }
         
-        var offsetX = CGFloat(pageIndex) * self.view.frame.width
+        let offsetX = CGFloat(pageIndex) * self.view.frame.width
         sv.setContentOffset(CGPointMake(offsetX, 0), animated: true)
     }
     

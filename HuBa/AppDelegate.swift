@@ -19,13 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
         
-        var tab:UITabBarController = UITabBarController()
+        let tab:UITabBarController = UITabBarController()
         
-        var view1:MenuController = MenuController()
+        let view1:MenuController = MenuController()
         
-        var view2:NewsController = NewsController()
+        let view2:NewsController = NewsController()
         
-        var view3:SetController = SetController()
+        let view3:SetController = SetController()
         
         self.initChild("首页", image1:"001", image2: "", childController: view1, tab: tab)
         
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         childController.tabBarItem = UITabBarItem(title: title, image: UIImage(named: image1), selectedImage: UIImage(named: image2))
         
-        var nav:UINavigationController = UINavigationController()
+        let nav:UINavigationController = UINavigationController()
         
         nav.addChildViewController(childController);
         

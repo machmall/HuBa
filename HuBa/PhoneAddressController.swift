@@ -11,7 +11,10 @@ import Alamofire
 
 class PhoneAddressController: UIViewController ,UITextFieldDelegate{
 
+    var blackBoard:UITextView!
+    
     var phoneText:UITextField!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,33 +31,58 @@ class PhoneAddressController: UIViewController ,UITextFieldDelegate{
     //创建视图
     func createUI(){
         self.phoneText = UITextField(frame: CGRectMake(10, 65, self.view.frame.size.width-100, 40))
-        phoneText.placeholder = "请输入手机号"
+        self.phoneText.placeholder = "请输入手机号"
+        self.phoneText.keyboardType = UIKeyboardType.PhonePad
         self.phoneText.delegate = self
         self.view.addSubview(self.phoneText)
         
-        var btn:UIButton = UIButton(frame: CGRectMake(self.view.frame.size.width-100, 65, 80, 40))
+        let btn:UIButton = UIButton(frame: CGRectMake(self.view.frame.size.width-100, 65, 80, 40))
         btn.setTitle("查询", forState: UIControlState.Normal)
         btn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btn.addTarget(self, action:Selector("search:"), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(btn)
+        
+        self.blackBoard = UITextView(frame: CGRectMake(10, 120, self.view.frame.size.width-20, self.view.frame.size.height-120))
+        self.blackBoard.font = UIFont.systemFontOfSize(25)
+        self.view.addSubview(self.blackBoard)
     }
 
-     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    func search(btn:UIButton){
+
+        Alamofire.request(.GET,"http://apis.baidu.com/apistore/mobilephoneservice/mobilephone?tel=\(self.phoneText.text as! NSString)")
+            .responseJSON { _, _, result in
+                
+                let dic:NSDictionary = result.value as!NSDictionary
+                print(dic)
+                
+                let dics:NSDictionary = dic["retData"] as! NSDictionary
+                let arr:NSArray = dics.allKeys as NSArray
+                for i in 0...arr.count-1 {
+                    var str:String = arr[i] as! String
+                    str = dics[str] as! String
+                    self.addText(str)
+                }
+         }
+    }
+    
+     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+       
         
-        Alamofire.request(.GET, "http://apis.baidu.com/apistore/mobilephoneservice/mobilephone?tel=18356092871").responseJSON() {
-            (_, _, data, _) in
-            println(data)
-            
-            var dic:NSDictionary = NSDictionary()
-            dic = data?.valueForKey("retData") as! NSDictionary
-            var arr:NSArray = dic.allKeys
-            for i in 0...2{
-            
-                var la:UILabel = UILabel(frame: CGRectMake(10, 100+50*CGFloat(i), 200, 50))
-                la.text = dic.valueForKey(arr[i] as! String) as? String
-                self.view.addSubview(la)
-            }
+        /*Alamofire.request(.GET, "http://apis.baidu.com/apistore/mobilephoneservice/mobilephone", parameters: ["tel": "18356092871"])
+            .response { request, response, data, error in
+                print(data)
+                
+               // print(response)
+               // print(error)
         }
         
+        Alamofire.request(.GET, "http://apis.baidu.com/apistore/mobilephoneservice/mobilephone&tel=18356092871", headers: ["apikey":"ed800cafc0f1e3a8e2a922fa3b37d7c1"])
+            .responseJSON { _, _, result in
+                debugPrint(result)
+        }*/
+        
+       
+            
         self.phoneText.resignFirstResponder()
     }
     
@@ -64,14 +92,8 @@ class PhoneAddressController: UIViewController ,UITextFieldDelegate{
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func addText(str:NSString){
+        self.blackBoard.text = self.blackBoard.text.stringByAppendingString((str as? String)!)
     }
-    */
 
 }
